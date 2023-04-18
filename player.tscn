@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0vwyrijyti6"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_3u4dn"]
+[ext_resource type="Texture2D" uid="uid://ujltrxn1iqp" path="res://sprites/player_sprite.jpg" id="2_73oaj"]
+[ext_resource type="PackedScene" uid="uid://ciwd13evcwek3" path="res://status_list.tscn" id="3_b6cjc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oyqkh"]
+size = Vector2(120, 120)
+
+[node name="player" type="CharacterBody2D"]
+slide_on_ceiling = false
+wall_min_slide_angle = 0.0
+floor_stop_on_slope = false
+floor_block_on_wall = false
+floor_snap_length = 0.0
+platform_on_leave = 2
+script = ExtResource("1_3u4dn")
+
+[node name="shape" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_oyqkh")
+
+[node name="player_sprite" type="Sprite2D" parent="."]
+position = Vector2(-2.11893, 0.529718)
+rotation = 1.5708
+scale = Vector2(1.87737, 1.86081)
+texture = ExtResource("2_73oaj")
+
+[node name="status_list" parent="." instance=ExtResource("3_b6cjc")]
+
+[node name="camera" type="Camera2D" parent="."]

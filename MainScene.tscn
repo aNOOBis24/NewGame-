@@ -1,3 +1,17 @@
-[gd_scene format=3 uid="uid://df48duyfil2ff"]
+[gd_scene load_steps=4 format=3 uid="uid://df48duyfil2ff"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="Script" path="res://stand_scene.gd" id="1_afubm"]
+[ext_resource type="PackedScene" uid="uid://d0vwyrijyti6" path="res://player.tscn" id="2_6gyn2"]
+[ext_resource type="PackedScene" uid="uid://vtms4voew3p7" path="res://enemy_placeholder.tscn" id="3_rjhx1"]
+
+[node name="stand_scene" type="Node2D"]
+script = ExtResource("1_afubm")
+
+[node name="player" parent="." instance=ExtResource("2_6gyn2")]
+position = Vector2(247, 131)
+
+[node name="timer" type="Timer" parent="."]
+
+[node name="enemy_placeholder" parent="." instance=ExtResource("3_rjhx1")]
+
+[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]

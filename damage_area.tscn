@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cutv0dyau1sl4"]
+
+[ext_resource type="Script" path="res://damage_area.gd" id="1_xu474"]
+[ext_resource type="Texture2D" uid="uid://bqlhfl4pqlwso" path="res://sprites/blue_sprite.jpg" id="2_isj5l"]
+[ext_resource type="Texture2D" uid="uid://bbsifefieduyh" path="res://sprites/enemy_sprite.jpg" id="3_qyuna"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n1beo"]
+radius = 1.0
+
+[node name="damage_area" type="Area2D"]
+script = ExtResource("1_xu474")
+
+[node name="shape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_n1beo")
+
+[node name="frost_sprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1.49012e-08, 0)
+scale = Vector2(0.03125, 0.03125)
+texture = ExtResource("2_isj5l")
+
+[node name="fire_sprite" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_qyuna")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

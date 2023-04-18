@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cftt8ucm75qq3"]
+
+[ext_resource type="Script" path="res://projectile.gd" id="1_wxn2c"]
+[ext_resource type="Texture2D" uid="uid://bbsifefieduyh" path="res://sprites/enemy_sprite.jpg" id="2_nea8q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c400o"]
+size = Vector2(1, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2qh4i"]
+radius = 1.1
+
+[node name="projectile" type="RigidBody2D"]
+script = ExtResource("1_wxn2c")
+
+[node name="shape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_c400o")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_nea8q")
+
+[node name="projectile_hitbox" type="Area2D" parent="."]
+
+[node name="shape" type="CollisionShape2D" parent="projectile_hitbox"]
+shape = SubResource("CircleShape2D_2qh4i")
+
+[connection signal="body_entered" from="projectile_hitbox" to="." method="_on_projectile_hitbox_body_entered"]
